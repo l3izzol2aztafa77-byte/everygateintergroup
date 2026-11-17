@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EVERYGATE Intergroup — ประตูบานเดียวสู่ทุกบริการธุรกิจ</title>
+<link rel="icon" type="image/svg+xml" href="/assets/logo-mark.svg">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..600,0..1,0&display=block" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'IBM Plex Sans Thai',system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+input,button,select,textarea{font-family:inherit;}
+[data-lang="th"] [lang="en"],[data-lang="en"] [lang="th"]{display:none !important;}
+[data-theme="light"]{--bg:#f3f4f8;--surface:#ffffff;--surface2:#f0f2f7;--ink:#1b2a4a;--muted:#56627c;--line:#e1e5ee;--accent:#1b2a4a;--accent-ink:#ffffff;--accent-soft:#edf0f7;--gold:#a8841f;--gold-soft:#f7efd9;--shadow:0 1px 2px rgb(27 42 74 / .06),0 12px 32px -10px rgb(27 42 74 / .16);--shadow-lg:0 2px 6px rgb(27 42 74 / .08),0 28px 56px -16px rgb(27 42 74 / .3);--frame:#dde2ec;--grad-accent:linear-gradient(135deg,#2c4372 0%,#1b2a4a 55%,#131f38 100%);--glow:0 10px 24px -10px rgb(27 42 74 / .6);}
+[data-theme="dark"]{--bg:#0a1120;--surface:#111b2e;--surface2:#18243b;--ink:#eef1f7;--muted:#a1abc0;--line:#223150;--accent:#d8b35c;--accent-ink:#141f36;--accent-soft:#1a2742;--gold:#d8b35c;--gold-soft:#2e2a1e;--shadow:0 1px 2px #0007,0 14px 34px -12px #000c;--shadow-lg:0 2px 6px #0008,0 30px 60px -16px #000e;--frame:#060b16;--grad-accent:linear-gradient(135deg,#f0d68f 0%,#d8b35c 50%,#b8922a 100%);--glow:0 10px 26px -10px rgb(216 179 92 / .7);}
+[data-theme="light"] [data-logo="dark"],[data-theme="dark"] [data-logo="light"]{display:none !important;}
+.msr{font-family:'Material Symbols Rounded';font-weight:normal;font-style:normal;line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;direction:ltr;font-feature-settings:'liga';font-variation-settings:'FILL' 0,'wght' 450,'opsz' 24;}
+[data-theme] *{transition:background-color .25s,border-color .25s,color .2s,transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .25s,filter .2s;}
+@keyframes egUp{from{opacity:0;transform:translateY(18px)}}
+@keyframes egFade{from{opacity:0}}
+@keyframes egDrawer{from{opacity:0;transform:translateX(48px)}}
+@keyframes egPop{from{opacity:0;transform:translateY(18px) scale(.96)}}
+@keyframes egGrow{from{transform:scaleX(0)}}
+@keyframes egDrift{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(6%,-5%,0) scale(1.12)}100%{transform:translate3d(-5%,6%,0) scale(.95)}}
+@keyframes egFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes egSpin{to{transform:rotate(360deg)}}
+@keyframes egSheen{from{background-position:200% 0}to{background-position:-200% 0}}
+@keyframes egGlow{0%,100%{box-shadow:0 0 0 0 rgb(216 179 92 / .5)}60%{box-shadow:0 0 0 10px rgb(216 179 92 / 0)}}
+@keyframes egPing{0%{box-shadow:0 0 0 0 rgb(229 72 77 / .65)}100%{box-shadow:0 0 0 9px rgb(229 72 77 / 0)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;}}
+</style>
+</helmet>
+
+<div data-theme="{{ theme }}" data-lang="{{ lang }}" style="min-height:100vh;background:var(--bg);color:var(--ink);">
+
+<!-- NAV -->
+<header style="position:sticky;top:0;z-index:50;background:color-mix(in oklch,var(--surface) 88%,transparent);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--line);box-shadow:0 10px 30px -24px rgb(27 42 74 / .6);">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:12px clamp(16px,4vw,32px);">
+    <a href="#top" style="display:flex;align-items:center;flex-shrink:0;">
+      <img data-logo="light" src="assets/logo-full-light.svg" alt="everygate" style="height:32px;width:auto;display:block;">
+      <img data-logo="dark" src="assets/logo-full-dark.svg" alt="everygate" style="height:32px;width:auto;display:block;">
+    </a>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav style="flex:1;display:flex;justify-content:center;gap:4px;">
+        <sc-for list="{{ links }}" as="l" hint-placeholder-count="5">
+          <a href="{{ l.href }}" style="padding:8px 12px;border-radius:8px;color:var(--ink);font-size:15px;font-weight:500;text-decoration:none;" style-hover="background:var(--surface2);"><span lang="th">{{ l.th }}</span><span lang="en">{{ l.en }}</span></a>
+        </sc-for>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><div style="flex:1;"></div></sc-if>
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+      <div style="display:flex;padding:3px;border-radius:999px;background:var(--surface2);border:1px solid var(--line);">
+        <button onClick="{{ setTh }}" style="border:0;cursor:pointer;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:600;background:{{ thBg }};color:{{ thFg }};">ไทย</button>
+        <button onClick="{{ setEn }}" style="border:0;cursor:pointer;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:600;background:{{ enBg }};color:{{ enFg }};">EN</button>
+      </div>
+      <button onClick="{{ toggleTheme }}" title="Theme" style="width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:grid;place-items:center;"><span class="msr" style="font-size:20px;">{{ themeIcon }}</span></button>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <a href="app.html" style="display:flex;align-items:center;gap:6px;height:40px;padding:0 16px;border-radius:10px;background:var(--grad-accent);color:var(--accent-ink);box-shadow:var(--glow);font-size:14px;font-weight:600;text-decoration:none;" style-hover="transform:translateY(-2px);filter:brightness(1.1);" style-active="transform:scale(.97);"><span class="msr" style="font-size:18px;">login</span><span lang="th">เข้าสู่ระบบ</span><span lang="en">Sign in</span></a>
+      </sc-if>
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ toggleMenu }}" style="width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:grid;place-items:center;"><span class="msr" style="font-size:22px;">{{ menuIcon }}</span></button>
+      </sc-if>
+    </div>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:2px;padding:8px 16px 16px;border-top:1px solid var(--line);">
+      <sc-for list="{{ links }}" as="l" hint-placeholder-count="5">
+        <a href="{{ l.href }}" onClick="{{ closeMenu }}" style="display:flex;align-items:center;gap:12px;min-height:48px;padding:0 8px;border-radius:10px;color:var(--ink);font-size:16px;font-weight:500;text-decoration:none;"><span class="msr" style="font-size:22px;color:var(--muted);">{{ l.icon }}</span><span lang="th">{{ l.th }}</span><span lang="en">{{ l.en }}</span></a>
+      </sc-for>
+      <a href="app.html" style="margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px;height:48px;border-radius:12px;background:var(--grad-accent);color:var(--accent-ink);box-shadow:var(--glow);font-size:15px;font-weight:600;text-decoration:none;" style-hover="transform:translateY(-2px);filter:brightness(1.1);" style-active="transform:scale(.97);"><span class="msr" style="font-size:20px;">login</span><span lang="th">เข้าสู่ระบบลูกค้า</span><span lang="en">Customer sign in</span></a>
+    </div>
+  </sc-if>
+</header>
+
+<sc-if value="{{ notSvc }}" hint-placeholder-val="{{ true }}">
+<!-- HERO -->
+<section id="top" style="position:relative;isolation:isolate;background:radial-gradient(900px 520px at 88% -12%,rgb(216 179 92 / .28),transparent 60%),radial-gradient(760px 480px at -8% 110%,rgb(74 132 255 / .28),transparent 60%),linear-gradient(160deg,#1b2a4a 0%,#0f2142 55%,#0b1a36 100%);color:#f4efe7;overflow:hidden;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden;border-radius:inherit;">
+  <div style="position:absolute;width:560px;height:560px;right:-160px;top:-200px;border-radius:50%;background:radial-gradient(circle,rgb(216 179 92 / .38),transparent 65%);animation:egDrift 16s ease-in-out infinite alternate;"></div>
+  <div style="position:absolute;width:520px;height:520px;left:-180px;bottom:-220px;border-radius:50%;background:radial-gradient(circle,rgb(74 132 255 / .32),transparent 65%);animation:egDrift 21s ease-in-out infinite alternate-reverse;"></div>
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgb(255 255 255 / .05) 1px,transparent 1px),linear-gradient(90deg,rgb(255 255 255 / .05) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(ellipse at 75% 25%,#000 5%,transparent 65%);mask-image:radial-gradient(ellipse at 75% 25%,#000 5%,transparent 65%);"></div>
+  <div style="position:absolute;width:600px;height:600px;right:-240px;bottom:-260px;border-radius:50%;border:1px solid rgb(216 179 92 / .25);animation:egSpin 36s linear infinite;"><div style="position:absolute;top:50%;left:-5px;width:10px;height:10px;border-radius:50%;background:#e6c677;box-shadow:0 0 18px 2px #d8b35c;"></div></div>
+  <div style="position:absolute;width:420px;height:420px;right:-150px;bottom:-170px;border-radius:50%;border:1px dashed rgb(255 255 255 / .14);animation:egSpin 60s linear infinite reverse;"></div>
+</div>
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,5vw,64px);align-items:center;padding:clamp(48px,8vw,96px) clamp(16px,4vw,32px) clamp(40px,6vw,72px);">
+    <div style="display:flex;flex-direction:column;gap:24px;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;">
+      <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;height:32px;background:rgb(216 179 92 / .1);padding:0 14px;border-radius:999px;border:1px solid rgb(216 179 92 / .35);color:#d8b35c;font-size:13px;font-weight:600;letter-spacing:.04em;">EVERYGATE INTERGROUP</span>
+      <h1 style="margin:0;font-size:clamp(36px,5.6vw,60px);line-height:1.12;font-weight:600;letter-spacing:-.015em;text-wrap:balance;"><span lang="th">ประตูบานเดียว<br><span style="background:linear-gradient(90deg,#d8b35c,#f6e2a8 25%,#8fb4ff 50%,#f6e2a8 75%,#d8b35c);background-size:200% auto;animation:egSheen 7s linear infinite;-webkit-background-clip:text;background-clip:text;color:transparent;">สู่ทุกบริการธุรกิจ</span></span><span lang="en">One gate to every<br><span style="background:linear-gradient(90deg,#d8b35c,#f6e2a8 25%,#8fb4ff 50%,#f6e2a8 75%,#d8b35c);background-size:200% auto;animation:egSheen 7s linear infinite;-webkit-background-clip:text;background-clip:text;color:transparent;">business service</span></span></h1>
+      <p style="margin:0;max-width:520px;font-size:clamp(16px,1.6vw,18px);line-height:1.7;color:rgb(244 239 231 / .82);text-wrap:pretty;"><span lang="th">แรงงาน MOU พลังงานแสงอาทิตย์ นำเข้า-ส่งออก อสังหาริมทรัพย์ ก่อสร้าง และที่ปรึกษากฎหมาย ดูแลครบโดยทีมเดียว พร้อมระบบออนไลน์ที่คุณติดตามทุกงานได้เองตลอดเวลา</span><span lang="en">MOU labor, solar energy, import-export, property, construction and legal advisory — handled by one team, with an online system that lets you follow every job, any time.</span></p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;">
+        <a href="app.html" style="display:flex;align-items:center;gap:8px;height:52px;padding:0 22px;border-radius:12px;background:linear-gradient(110deg,#b8922a,#e6c677 40%,#fff3cf 50%,#e6c677 60%,#b8922a);background-size:250% 100%;animation:egSheen 4.5s linear infinite;color:#1b2a4a;box-shadow:0 12px 30px -10px rgb(216 179 92 / .7);font-size:16px;font-weight:600;text-decoration:none;" style-hover="transform:translateY(-2px);filter:brightness(1.06);"><span lang="th">ขอใบเสนอราคา</span><span lang="en">Request a quote</span><span class="msr" style="font-size:20px;">arrow_forward</span></a>
+        <a href="#services" style="display:flex;align-items:center;gap:8px;height:52px;padding:0 22px;border-radius:12px;border:1px solid rgb(244 239 231 / .25);color:#f4efe7;font-size:16px;font-weight:600;text-decoration:none;" style-hover="background:rgb(255 255 255 / .06);"><span lang="th">ดูบริการของเรา</span><span lang="en">Explore services</span></a>
+      </div>
+    </div>
+    <div style="position:relative;height:clamp(300px,42vw,480px);animation:egPop 1.1s .2s cubic-bezier(.2,.7,.2,1) backwards;">
+      <div style="position:relative;width:100%;height:100%;"><x-import component-from-global-scope="eg-logo-hero" from="./logo-hero.js" hint-size="100%,100%" style="width:100%;height:100%;"></x-import></div>
+      <div style="position:absolute;top:22px;left:-14px;animation:egFloat 5s ease-in-out infinite;display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:16px;background:rgb(255 255 255 / .12);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgb(255 255 255 / .22);pointer-events:none;"><span class="msr" style="font-size:22px;color:#d8b35c;">verified</span><span style="font-size:14px;font-weight:600;"><span lang="th">6 บริการ ทีมเดียว</span><span lang="en">6 services, one team</span></span></div>
+      <div style="position:absolute;bottom:44px;right:-14px;animation:egFloat 6s 1.2s ease-in-out infinite;display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:16px;background:rgb(255 255 255 / .12);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgb(255 255 255 / .22);pointer-events:none;"><span class="msr" style="font-size:22px;color:#8fb4ff;">monitoring</span><span style="font-size:14px;font-weight:600;"><span lang="th">ติดตามทุกงานออนไลน์</span><span lang="en">Track every job online</span></span></div>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgb(216 179 92 / .16);">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));padding:0 clamp(16px,4vw,32px);">
+      <sc-for list="{{ lines }}" as="l" hint-placeholder-count="5">
+        <a href="#services" style="display:flex;align-items:center;gap:12px;padding:20px 8px;color:#f4efe7;text-decoration:none;font-size:15px;font-weight:500;border-bottom:2px solid transparent;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;" style-hover="border-bottom-color:#d8b35c;transform:translateY(-2px);">
+          <span class="msr" style="font-size:24px;color:#d8b35c;">{{ l.icon }}</span><span lang="th">{{ l.th }}</span><span lang="en">{{ l.en }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="position:relative;background:radial-gradient(800px 400px at 100% 0%,color-mix(in oklch,var(--gold) 14%,transparent),transparent 70%),radial-gradient(700px 420px at 0% 100%,color-mix(in oklch,#4a84ff 12%,transparent),transparent 70%);">
+<div style="max-width:1200px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(16px,4vw,32px);display:flex;flex-direction:column;gap:40px;">
+  <div style="display:flex;flex-direction:column;gap:12px;max-width:640px;">
+    <span style="font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--gold);"><span lang="th">บริการของเรา</span><span lang="en">WHAT WE DO</span></span>
+    <h2 style="margin:0;font-size:clamp(32px,4.4vw,52px);line-height:1.12;font-weight:600;letter-spacing:-.015em;text-wrap:balance;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 25%;"><span lang="th">6 บริการ ที่เจ้าของกิจการต้องใช้</span><span lang="en">Six services every business owner needs</span></h2>
+    <p style="margin:0;font-size:17px;line-height:1.7;color:var(--muted);text-wrap:pretty;"><span lang="th">แทนที่จะติดต่อผู้ให้บริการหลายเจ้า คุณคุยกับเราที่เดียว แล้วเราประสานงานให้ทั้งหมด</span><span lang="en">Instead of juggling many vendors, talk to us once — we coordinate the rest.</span></p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:20px;">
+    <sc-for list="{{ lines }}" as="l" hint-placeholder-count="6">
+      <article style="display:flex;flex-direction:column;border-radius:24px;background:var(--surface);border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow);animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;" style-hover="transform:translateY(-4px);box-shadow:0 18px 44px rgb(21 43 79 / .14);">
+        <div style="position:relative;height:230px;">
+          <div style="position:relative;width:100%;height:100%;"><image-slot id="{{ l.imgId }}" shape="rect" placeholder="{{ l.imgPh }}" src="{{ l.src }}" style="width:100%;height:100%;"></image-slot></div>
+          <div style="position:absolute;inset:0 0 auto 0;height:70%;background:linear-gradient(to bottom,rgb(10 18 34 / .55),transparent);pointer-events:none;"></div>
+          <div style="position:absolute;left:20px;top:18px;right:20px;display:flex;align-items:center;justify-content:space-between;pointer-events:none;">
+            <span style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,{{ l.color }},{{ l.color2 }});display:grid;place-items:center;box-shadow:0 6px 18px rgb(0 0 0 / .25);"><span class="msr" style="font-size:28px;color:#fff;">{{ l.icon }}</span></span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:500;color:rgb(255 255 255 / .85);">{{ l.no }}</span>
+          </div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:16px;padding:26px 26px 24px;">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <h3 style="margin:0;font-size:24px;line-height:1.25;font-weight:600;letter-spacing:-.01em;"><span lang="th">{{ l.th }}</span><span lang="en">{{ l.en }}</span></h3>
+            <p style="margin:0;font-size:15px;line-height:1.7;color:var(--muted);text-wrap:pretty;"><span lang="th">{{ l.dTh }}</span><span lang="en">{{ l.dEn }}</span></p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <sc-for list="{{ l.items }}" as="it" hint-placeholder-count="3">
+              <span style="display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:{{ l.soft }};font-size:13px;font-weight:500;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;"><span class="msr" style="font-size:16px;color:{{ l.color }};">check</span><span lang="th">{{ it.th }}</span><span lang="en">{{ it.en }}</span></span>
+            </sc-for>
+          </div>
+          <div style="margin-top:auto;display:flex;gap:10px;padding-top:6px;">
+            <a href="{{ l.href }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:46px;border-radius:12px;background:var(--grad-accent);color:var(--accent-ink);box-shadow:var(--glow);font-size:15px;font-weight:600;text-decoration:none;" style-hover="transform:translateY(-2px);filter:brightness(1.1);" style-active="transform:scale(.97);"><span lang="th">{{ l.ctaTh }}</span><span lang="en">{{ l.ctaEn }}</span><span class="msr" style="font-size:18px;">arrow_forward</span></a>
+            <a href="app.html" title="Request a quote" style="display:flex;align-items:center;justify-content:center;gap:6px;height:46px;padding:0 14px;border-radius:12px;border:1px solid var(--line);color:var(--ink);font-size:14px;font-weight:600;text-decoration:none;"><span class="msr" style="font-size:18px;">request_quote</span><span lang="th">ขอราคา</span><span lang="en">Quote</span></a>
+          </div>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(16px,4vw,32px);display:flex;flex-direction:column;gap:44px;">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:600px;">
+        <span style="font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--gold);"><span lang="th">วิธีการทำงาน</span><span lang="en">HOW IT WORKS</span></span>
+        <h2 style="margin:0;font-size:clamp(28px,3.6vw,40px);line-height:1.2;font-weight:600;letter-spacing:-.01em;text-wrap:balance;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 25%;"><span lang="th">ชัดเจนทุกขั้นตอน ตั้งแต่ขอราคาจนส่งมอบ</span><span lang="en">Clear at every step, from quote to handover</span></h2>
+      </div>
+      <p style="margin:0;max-width:380px;font-size:16px;line-height:1.7;color:var(--muted);text-wrap:pretty;"><span lang="th">ทุกงานมีสถานะให้ดูในระบบ คุณไม่ต้องโทรถามว่างานไปถึงไหนแล้ว</span><span lang="en">Every job has a live status in the system — no more calling to ask where things are.</span></p>
+    </div>
+    <ol style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <li style="display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:18px;background:var(--bg);border:1px solid var(--line);animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#b8922a,#d8b35c);color:#1b2a4a;display:grid;place-items:center;font-weight:700;font-size:17px;box-shadow:0 8px 20px rgb(184 146 42 / .35);animation:egGlow 2.8s ease-in-out infinite;">{{ s.n }}</span>
+            <div style="flex:1;height:2px;border-radius:99px;background:linear-gradient(90deg,var(--gold),transparent);transform-origin:left;animation:egGrow 1s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 10% cover 40%;"></div>
+          </div>
+          <h3 style="margin:0;font-size:18px;font-weight:600;"><span lang="th">{{ s.th }}</span><span lang="en">{{ s.en }}</span></h3>
+          <p style="margin:0;font-size:15px;line-height:1.65;color:var(--muted);text-wrap:pretty;"><span lang="th">{{ s.dTh }}</span><span lang="en">{{ s.dEn }}</span></p>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story" style="max-width:1200px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(16px,4vw,32px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(32px,5vw,72px);align-items:center;">
+  <div style="position:relative;height:clamp(320px,44vw,520px);">
+    <div style="position:relative;width:100%;height:100%;"><image-slot id="web-story" shape="rounded" radius="24" placeholder="ภาพผู้ก่อตั้ง / สำนักงาน" src="img/mou.jpg" style="width:100%;height:100%;"></image-slot></div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:22px;">
+    <span style="font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--gold);"><span lang="th">เรื่องราวของเรา</span><span lang="en">OUR STORY</span></span>
+    <h2 style="margin:0;font-size:clamp(28px,3.6vw,40px);line-height:1.2;font-weight:600;letter-spacing:-.01em;text-wrap:balance;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 25%;"><span lang="th">ทำไมถึงชื่อ EVERYGATE</span><span lang="en">Why we’re called EVERYGATE</span></h2>
+    <p style="margin:0;font-size:17px;line-height:1.8;color:var(--muted);text-wrap:pretty;"><span lang="th">เราเห็นเจ้าของกิจการจำนวนมากต้องเปิดประตูทีละบาน หาผู้รับเหมาเจ้าหนึ่ง ตัวแทนแรงงานอีกเจ้า ชิปปิ้งอีกเจ้า และต้องตามงานเองทุกเรื่อง</span><span lang="en">We watched business owners open one door at a time — one contractor here, a labor agent there, a shipping agent somewhere else — and chase every job themselves.</span></p>
+    <p style="margin:0;font-size:17px;line-height:1.8;color:var(--muted);text-wrap:pretty;"><span lang="th">EVERYGATE จึงเกิดขึ้นเพื่อเป็นประตูบานเดียวที่เปิดไปสู่ทุกบริการ รวมผู้เชี่ยวชาญแต่ละด้านไว้ในเครือเดียว และใช้เทคโนโลยีทำให้ทุกงานโปร่งใส ตรวจสอบได้</span><span lang="en">EVERYGATE exists to be the single gate to all of it: specialists under one group, and technology that makes every job transparent and traceable.</span></p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:12px;margin-top:6px;">
+      <sc-for list="{{ values }}" as="v" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:8px;padding:18px;border-radius:16px;background:var(--surface);border:1px solid var(--line);animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;box-shadow:var(--shadow);">
+          <span class="msr" style="font-size:24px;color:var(--gold);">{{ v.icon }}</span>
+          <span style="font-size:16px;font-weight:600;"><span lang="th">{{ v.th }}</span><span lang="en">{{ v.en }}</span></span>
+          <span style="font-size:14px;line-height:1.55;color:var(--muted);"><span lang="th">{{ v.dTh }}</span><span lang="en">{{ v.dEn }}</span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- LEGAL AI -->
+<section id="legal-ai" style="max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,32px) clamp(64px,9vw,112px);">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(24px,4vw,48px);align-items:center;padding:clamp(28px,5vw,48px);border-radius:28px;background:var(--surface);border:1px solid var(--line);">
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;height:30px;padding:0 12px;border-radius:999px;background:var(--gold-soft);color:var(--gold);font-size:13px;font-weight:600;"><span class="msr" style="font-size:18px;">gavel</span><span lang="th">ใหม่ · ผู้ช่วยกฎหมาย AI</span><span lang="en">New · Legal AI assistant</span></span>
+      <h2 style="margin:0;font-size:clamp(26px,3.2vw,36px);line-height:1.2;font-weight:600;letter-spacing:-.01em;text-wrap:balance;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 25%;"><span lang="th">AI ตรวจก่อน ทนายยืนยัน</span><span lang="en">AI takes the first pass. Lawyers sign off.</span></h2>
+      <p style="margin:0;font-size:16px;line-height:1.7;color:var(--muted);text-wrap:pretty;"><span lang="th">เข้าใจสัญญาและเอกสารได้ในไม่กี่นาที รู้ว่าต้องระวังตรงไหน แล้วค่อยส่งให้ทนายของเราตรวจเฉพาะจุดที่สำคัญ ประหยัดทั้งเวลาและค่าใช้จ่าย</span><span lang="en">Understand contracts and paperwork in minutes, see what to watch out for, then send only what matters to our lawyers — saving time and fees.</span></p>
+      <span style="display:flex;gap:8px;font-size:13px;line-height:1.5;color:var(--muted);"><span class="msr" style="font-size:18px;">info</span><span><span lang="th">ผลจาก AI เป็นข้อมูลเบื้องต้น ไม่ใช่ความเห็นทางกฎหมาย</span><span lang="en">AI output is general information, not legal advice.</span></span></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <sc-for list="{{ legalAi }}" as="x" hint-placeholder-count="3">
+        <div style="display:flex;gap:14px;align-items:flex-start;padding:18px;border-radius:16px;background:var(--bg);border:1px solid var(--line);animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;">
+          <span style="width:40px;height:40px;flex-shrink:0;border-radius:12px;background:var(--accent-soft);display:grid;place-items:center;"><span class="msr" style="font-size:22px;color:var(--accent);">{{ x.icon }}</span></span>
+          <span style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:16px;font-weight:600;"><span lang="th">{{ x.th }}</span><span lang="en">{{ x.en }}</span></span><span style="font-size:14px;line-height:1.55;color:var(--muted);"><span lang="th">{{ x.dTh }}</span><span lang="en">{{ x.dEn }}</span></span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- SECRETARY + PRICING -->
+<section id="secretary" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(16px,4vw,32px);display:flex;flex-direction:column;gap:44px;">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;">
+      <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#9a7520,#d8b35c);color:#1b2a4a;display:grid;place-items:center;"><span class="msr" style="font-size:28px;">auto_awesome</span></div>
+      <h2 style="margin:0;max-width:720px;font-size:clamp(28px,3.6vw,40px);line-height:1.2;font-weight:600;letter-spacing:-.01em;text-wrap:balance;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 25%;"><span lang="th">เลขา AI ที่รู้จักงานของคุณ</span><span lang="en">An AI secretary that knows your work</span></h2>
+      <p style="margin:0;max-width:600px;font-size:17px;line-height:1.7;color:var(--muted);text-wrap:pretty;"><span lang="th">ถามสถานะงาน ลงนัด เพิ่มงาน ได้ด้วยการพิมพ์คุยภาษาไทย เลขารู้ข้อมูลใบเสนอราคาของคุณในระบบอยู่แล้ว ทดลองใช้ฟรี 20 ข้อความ</span><span lang="en">Ask about job status, book meetings and add tasks just by chatting. It already knows your quotes. Try 20 messages free.</span></p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;align-items:stretch;">
+      <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+        <div style="position:relative;display:flex;flex-direction:column;gap:20px;padding:28px;border-radius:20px;background:{{ p.bg }};color:{{ p.fg }};border:1px solid {{ p.bd }};animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;">
+          <sc-if value="{{ p.hot }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:20px;right:20px;animation:egGlow 2.4s ease-in-out infinite;height:26px;padding:0 10px;border-radius:999px;background:linear-gradient(135deg,#b8922a,#d8b35c);color:#1b2a4a;font-size:12px;font-weight:700;display:grid;place-items:center;"><span lang="th">ยอดนิยม</span><span lang="en">Popular</span></span></sc-if>
+          <span style="font-size:18px;font-weight:600;">{{ p.name }}</span>
+          <div style="display:flex;align-items:baseline;gap:6px;">
+            <span style="font-size:40px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;">{{ p.price }}</span>
+            <span style="font-size:15px;opacity:.75;"><span lang="th">/ เดือน</span><span lang="en">/ month</span></span>
+          </div>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;">
+            <sc-for list="{{ p.feats }}" as="f" hint-placeholder-count="3">
+              <li style="display:flex;gap:10px;font-size:15px;line-height:1.5;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;"><span class="msr" style="font-size:18px;color:{{ p.chk }};margin-top:2px;">check</span><span><span lang="th">{{ f.th }}</span><span lang="en">{{ f.en }}</span></span></li>
+            </sc-for>
+          </ul>
+          <a href="app.html" style="margin-top:auto;display:flex;align-items:center;justify-content:center;height:48px;border-radius:12px;background:{{ p.btnBg }};color:{{ p.btnFg }};border:1px solid {{ p.btnBd }};font-size:15px;font-weight:600;text-decoration:none;"><span lang="th">เลือกแพ็กเกจนี้</span><span lang="en">Choose plan</span></a>
+        </div>
+      </sc-for>
+      <div style="display:flex;flex-direction:column;gap:20px;padding:28px;border-radius:20px;background:var(--bg);border:1.5px dashed color-mix(in oklch,var(--gold) 55%,transparent);">
+        <div style="width:44px;height:44px;border-radius:12px;background:var(--gold-soft);display:grid;place-items:center;"><span class="msr" style="font-size:24px;color:var(--gold);">tune</span></div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <span style="font-size:18px;font-weight:600;"><span lang="th">ต้องการมากกว่านี้?</span><span lang="en">Need more?</span></span>
+          <p style="margin:0;font-size:15px;line-height:1.65;color:var(--muted);text-wrap:pretty;"><span lang="th">ต้องการโควตา ระบบเชื่อมต่อ หรือสเปคที่มากกว่าแพ็กเกจที่มี ทีมงานออกแบบแพ็กเกจให้ตรงกับธุรกิจคุณได้</span><span lang="en">Need more quota, integrations or a bigger spec than our plans offer? Our team will tailor a package for your business.</span></p>
+        </div>
+        <a href="#contact" style="margin-top:auto;display:flex;align-items:center;justify-content:center;gap:8px;height:48px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:15px;font-weight:600;text-decoration:none;"><span class="msr" style="font-size:20px;">support_agent</span><span lang="th">ติดต่อทีมงาน</span><span lang="en">Contact our team</span></a>
+      </div>
+    </div>
+    <p style="margin:0;text-align:center;font-size:14px;color:var(--muted);"><span lang="th">ราคายังไม่รวม VAT 3% · แชตกับเลขา 10 เครดิต · ถามกฎหมาย 100 · ตรวจสัญญา 300<br>ส่วนเสริม: ERP ธุรกิจของฉัน (CRM · ขาย · โปรเจกต์) ฿1,500 · ระบบบัญชี ฿2,500 ต่อเดือน</span><span lang="en">Prices exclude 3% VAT · Secretary chat 10 credits · Legal Q&amp;A 100 · Contract review 300<br>Add-ons: Business ERP (CRM · Sales · Projects) ฿1,500 · Accounting ฿2,500 per month</span></p>
+  </div>
+</section>
+
+</sc-if>
+
+<!-- SERVICE DETAIL -->
+<sc-if value="{{ isSvc }}" hint-placeholder-val="{{ false }}">
+<section style="background:radial-gradient(900px 520px at 88% -12%,rgb(216 179 92 / .28),transparent 60%),radial-gradient(760px 480px at -8% 110%,rgb(74 132 255 / .28),transparent 60%),linear-gradient(160deg,#1b2a4a 0%,#0f2142 55%,#0b1a36 100%);color:#f4efe7;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:28px;padding:clamp(28px,4vw,40px) clamp(16px,4vw,32px) clamp(48px,7vw,80px);">
+    <a href="#services" style="align-self:flex-start;display:flex;align-items:center;gap:6px;color:#d8b35c;font-size:14px;font-weight:600;text-decoration:none;"><span class="msr" style="font-size:18px;">arrow_back</span><span lang="th">บริการทั้งหมด</span><span lang="en">All services</span></a>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(28px,5vw,56px);align-items:center;">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:999px;background:rgb(255 255 255 / .08);border:1px solid rgb(216 179 92 / .3);font-size:14px;font-weight:600;"><span class="msr" style="font-size:20px;color:#d8b35c;">{{ sv.icon }}</span><span lang="th">{{ sv.th }}</span><span lang="en">{{ sv.en }}</span></span>
+        <h1 style="margin:0;font-size:clamp(32px,4.6vw,52px);line-height:1.15;font-weight:600;letter-spacing:-.015em;text-wrap:balance;"><span lang="th">{{ sv.hTh }}</span><span lang="en">{{ sv.hEn }}</span></h1>
+        <p style="margin:0;max-width:540px;font-size:17px;line-height:1.75;color:rgb(244 239 231 / .82);text-wrap:pretty;"><span lang="th">{{ sv.iTh }}</span><span lang="en">{{ sv.iEn }}</span></p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;">
+          <a href="app.html" style="display:flex;align-items:center;gap:8px;height:52px;padding:0 22px;border-radius:12px;background:linear-gradient(110deg,#b8922a,#e6c677 40%,#fff3cf 50%,#e6c677 60%,#b8922a);background-size:250% 100%;animation:egSheen 4.5s linear infinite;color:#1b2a4a;box-shadow:0 12px 30px -10px rgb(216 179 92 / .7);font-size:16px;font-weight:600;text-decoration:none;" style-hover="transform:translateY(-2px);filter:brightness(1.06);"><span lang="th">ขอใบเสนอราคา</span><span lang="en">Request a quote</span><span class="msr" style="font-size:20px;">arrow_forward</span></a>
+          <a href="#contact" style="display:flex;align-items:center;gap:8px;height:52px;padding:0 22px;border-radius:12px;border:1px solid rgb(244 239 231 / .25);color:#f4efe7;font-size:16px;font-weight:600;text-decoration:none;"><span class="msr" style="font-size:20px;">support_agent</span><span lang="th">ปรึกษาทีมงาน</span><span lang="en">Talk to our team</span></a>
+        </div>
+      </div>
+      <div style="position:relative;height:clamp(280px,40vw,440px);">
+        <sc-for list="{{ heroSlots }}" as="im" hint-placeholder-count="0"><sc-if value="{{ im.on }}" hint-placeholder-val="{{ false }}"><div style="position:relative;width:100%;height:100%;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;"><image-slot id="{{ im.id }}" shape="rounded" radius="24" placeholder="{{ im.ph }}" src="{{ im.src }}" style="width:100%;height:100%;"></image-slot></div></sc-if></sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(16px,4vw,32px) 0;display:flex;flex-direction:column;gap:20px;">
+  <span style="font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--gold);"><span lang="th">เหมาะกับใคร</span><span lang="en">WHO IT’S FOR</span></span>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;">
+    <sc-for list="{{ sv.who }}" as="x" hint-placeholder-count="3">
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:18px;border-radius:16px;background:var(--surface);border:1px solid var(--line);animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;box-shadow:var(--shadow);">
+        <span class="msr" style="font-size:22px;color:var(--gold);">{{ x.icon }}</span>
+        <span style="font-size:15px;line-height:1.55;"><span lang="th">{{ x.th }}</span><span lang="en">{{ x.en }}</span></span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(16px,4vw,32px) 0;display:flex;flex-direction:column;gap:28px;">
+  <div style="display:flex;flex-direction:column;gap:10px;max-width:640px;">
+    <span style="font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--gold);"><span lang="th">บริการที่ครอบคลุม</span><span lang="en">WHAT’S INCLUDED</span></span>
+    <h2 style="margin:0;font-size:clamp(26px,3.2vw,36px);line-height:1.2;font-weight:600;text-wrap:balance;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 25%;"><span lang="th">{{ sv.subTh }}</span><span lang="en">{{ sv.subEn }}</span></h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;">
+    <sc-for list="{{ sv.subs }}" as="x" hint-placeholder-count="4">
+      <article style="display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:18px;background:var(--surface);border:1px solid var(--line);animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;box-shadow:var(--shadow);" style-hover="transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:color-mix(in oklch,var(--gold) 45%,var(--line));">
+        <div style="width:48px;height:48px;border-radius:14px;background:{{ sv.soft }};display:grid;place-items:center;"><span class="msr" style="font-size:26px;color:{{ sv.color }};">{{ x.icon }}</span></div>
+        <h3 style="margin:0;font-size:18px;font-weight:600;"><span lang="th">{{ x.th }}</span><span lang="en">{{ x.en }}</span></h3>
+        <p style="margin:0;font-size:15px;line-height:1.65;color:var(--muted);text-wrap:pretty;"><span lang="th">{{ x.dTh }}</span><span lang="en">{{ x.dEn }}</span></p>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(16px,4vw,32px) 0;display:flex;flex-direction:column;gap:28px;">
+  <span style="font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--gold);"><span lang="th">ขั้นตอนการทำงาน</span><span lang="en">HOW WE DO IT</span></span>
+  <ol style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;">
+    <sc-for list="{{ sv.steps }}" as="x" hint-placeholder-count="5">
+      <li style="display:flex;flex-direction:column;gap:12px;padding:22px;border-radius:18px;background:var(--surface);border:1px solid var(--line);animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;box-shadow:var(--shadow);">
+        <span style="width:38px;height:38px;border-radius:999px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:700;">{{ x.n }}</span>
+        <span style="font-size:17px;font-weight:600;"><span lang="th">{{ x.th }}</span><span lang="en">{{ x.en }}</span></span>
+        <span style="font-size:14px;line-height:1.6;color:var(--muted);"><span lang="th">{{ x.dTh }}</span><span lang="en">{{ x.dEn }}</span></span>
+      </li>
+    </sc-for>
+  </ol>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(16px,4vw,32px) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:24px;align-items:start;">
+  <div style="display:flex;flex-direction:column;gap:16px;padding:26px;border-radius:20px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);">
+    <span style="display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600;"><span class="msr" style="font-size:24px;color:var(--gold);">folder_open</span><span lang="th">{{ sv.docTh }}</span><span lang="en">{{ sv.docEn }}</span></span>
+    <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;">
+      <sc-for list="{{ sv.docs }}" as="x" hint-placeholder-count="5">
+        <li style="display:flex;gap:10px;font-size:15px;line-height:1.55;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;"><span class="msr" style="font-size:20px;color:var(--accent);">check_circle</span><span><span lang="th">{{ x.th }}</span><span lang="en">{{ x.en }}</span></span></li>
+      </sc-for>
+    </ul>
+  </div>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:200px 200px;gap:12px;min-width:0;">
+    <sc-for list="{{ galSlots }}" as="im" hint-placeholder-count="0"><sc-if value="{{ im.on }}" hint-placeholder-val="{{ false }}"><div style="position:relative;min-width:0;overflow:hidden;border-radius:16px;grid-column:{{ im.col }};grid-row:{{ im.row }};animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;"><div style="position:relative;width:100%;height:100%;"><image-slot id="{{ im.id }}" shape="rounded" radius="16" placeholder="{{ im.ph }}" src="{{ im.src }}" style="width:100%;height:100%;"></image-slot></div></div></sc-if></sc-for>
+  </div>
+</section>
+
+<section style="max-width:860px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(16px,4vw,32px) 0;display:flex;flex-direction:column;gap:20px;">
+  <h2 style="margin:0;font-size:clamp(24px,3vw,32px);font-weight:600;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 25%;"><span lang="th">คำถามที่พบบ่อย</span><span lang="en">FAQ</span></h2>
+  <div style="display:flex;flex-direction:column;border-radius:18px;background:var(--surface);border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow);">
+    <sc-for list="{{ faq }}" as="x" hint-placeholder-count="4">
+      <div style="display:flex;flex-direction:column;border-top:{{ x.bd }};animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;">
+        <button onClick="{{ x.toggle }}" style="display:flex;align-items:center;gap:12px;min-height:60px;padding:14px 20px;border:0;background:transparent;color:var(--ink);font-size:16px;font-weight:600;text-align:left;cursor:pointer;">
+          <span style="flex:1;"><span lang="th">{{ x.qTh }}</span><span lang="en">{{ x.qEn }}</span></span>
+          <span class="msr" style="font-size:22px;color:var(--muted);">{{ x.icon }}</span>
+        </button>
+        <sc-if value="{{ x.open }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:0 20px 18px;font-size:15px;line-height:1.7;color:var(--muted);text-wrap:pretty;"><span lang="th">{{ x.aTh }}</span><span lang="en">{{ x.aEn }}</span></p></sc-if>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,80px) clamp(16px,4vw,32px) 0;display:flex;flex-direction:column;gap:14px;">
+  <span style="font-size:14px;font-weight:600;color:var(--muted);"><span lang="th">บริการอื่นของเรา</span><span lang="en">Other services</span></span>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;">
+    <sc-for list="{{ others }}" as="o" hint-placeholder-count="5">
+      <a href="{{ o.href }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:14px;font-weight:500;text-decoration:none;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;" style-hover="border-color:var(--accent);"><span class="msr" style="font-size:20px;color:{{ o.color }};">{{ o.icon }}</span><span lang="th">{{ o.th }}</span><span lang="en">{{ o.en }}</span><sc-if value="{{ o.soon }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;color:var(--muted);"><span lang="th">(เร็วๆ นี้)</span><span lang="en">(soon)</span></span></sc-if></a>
+    </sc-for>
+  </div>
+</section>
+</sc-if>
+
+<!-- ESTIMATOR -->
+<section id="estimate" style="max-width:1200px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(16px,4vw,32px) 0;display:flex;flex-direction:column;gap:28px;">
+  <div style="display:flex;flex-direction:column;gap:10px;max-width:680px;">
+    <span style="font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--gold);"><span lang="th">ประเมินเบื้องต้น</span><span lang="en">QUICK ESTIMATE</span></span>
+    <h2 style="margin:0;font-size:clamp(28px,3.8vw,44px);line-height:1.15;font-weight:600;letter-spacing:-.01em;text-wrap:balance;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 25%;"><span lang="th">คำนวณค่าใช้จ่ายและระยะเวลา ก่อนตัดสินใจ</span><span lang="en">Estimate cost and timeline before you decide</span></h2>
+    <p style="margin:0;font-size:16px;line-height:1.7;color:var(--muted);text-wrap:pretty;"><span lang="th">เลือกบริการ ปรับตัวเลขตามงานของคุณ แล้วดูช่วงราคาและเวลาโดยประมาณได้ทันที</span><span lang="en">Pick a service, adjust to your job, and see an instant price and time range.</span></p>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;">
+    <sc-for list="{{ estTabs }}" as="t" hint-placeholder-count="6">
+      <button onClick="{{ t.pick }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:999px;border:1px solid {{ t.bd }};background:{{ t.bg }};color:{{ t.fg }};font-size:14px;font-weight:600;cursor:pointer;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;"><span class="msr" style="font-size:20px;color:{{ t.ic }};">{{ t.icon }}</span><span lang="th">{{ t.th }}</span><span lang="en">{{ t.en }}</span></button>
+    </sc-for>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px;align-items:stretch;">
+    <div style="display:flex;flex-direction:column;gap:26px;padding:clamp(22px,3vw,32px);border-radius:24px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);">
+      <sc-for list="{{ estFields }}" as="f" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:12px;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+            <span style="font-size:15px;font-weight:600;"><span lang="th">{{ f.th }}</span><span lang="en">{{ f.en }}</span></span>
+            <sc-if value="{{ f.isRange }}" hint-placeholder-val="{{ false }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;color:var(--accent);"><span lang="th">{{ f.dispTh }}</span><span lang="en">{{ f.dispEn }}</span></span></sc-if>
+          </div>
+          <sc-if value="{{ f.isRange }}" hint-placeholder-val="{{ false }}">
+            <input type="range" min="{{ f.min }}" max="{{ f.max }}" step="{{ f.step }}" value="{{ f.val }}" onChange="{{ f.change }}" aria-label="{{ f.en }}" style="width:100%;height:28px;accent-color:var(--accent);cursor:pointer;">
+          </sc-if>
+          <sc-if value="{{ f.isChoice }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <sc-for list="{{ f.opts }}" as="op" hint-placeholder-count="3">
+                <button onClick="{{ op.pick }}" style="min-height:44px;padding:0 16px;border-radius:12px;border:1px solid {{ op.bd }};background:{{ op.bg }};color:{{ op.fg }};font-size:14px;font-weight:600;cursor:pointer;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;"><span lang="th">{{ op.th }}</span><span lang="en">{{ op.en }}</span></button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px;padding:clamp(22px,3vw,32px);border-radius:24px;background:radial-gradient(600px 360px at 100% 0%,rgb(216 179 92 / .25),transparent 60%),linear-gradient(160deg,#1b2a4a 0%,#0f2142 60%,#0b1a36 100%);color:#f4efe7;box-shadow:0 24px 60px rgb(21 43 79 / .22);">
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <span style="font-size:14px;color:rgb(244 239 231 / .75);"><span lang="th">ค่าใช้จ่ายโดยประมาณ</span><span lang="en">Estimated cost</span><span lang="th">{{ est.perTh }}</span><span lang="en">{{ est.perEn }}</span></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:clamp(26px,3.4vw,38px);font-weight:600;line-height:1.15;color:#f6d9b0;">{{ est.cost }}</span>
+        <span style="font-size:13px;color:rgb(244 239 231 / .7);"><span lang="th">ยังไม่รวม VAT 3% · รวม VAT </span><span lang="en">Excl. 3% VAT · incl. VAT </span>{{ est.vat }}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;padding:16px;border-radius:16px;background:rgb(255 255 255 / .07);border:1px solid rgb(255 255 255 / .12);">
+        <span class="msr" style="font-size:28px;color:#8fb4ff;">schedule</span>
+        <div style="display:flex;flex-direction:column;gap:2px;">
+          <span style="font-size:13px;color:rgb(244 239 231 / .7);"><span lang="th">ระยะเวลาดำเนินการ</span><span lang="en">Timeline</span></span>
+          <span style="font-size:20px;font-weight:600;"><span lang="th">{{ est.timeTh }}</span><span lang="en">{{ est.timeEn }}</span></span>
+        </div>
+      </div>
+      <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;">
+        <sc-for list="{{ est.lines }}" as="x" hint-placeholder-count="3">
+          <li style="display:flex;justify-content:space-between;gap:12px;font-size:14px;padding-bottom:10px;border-bottom:1px solid rgb(255 255 255 / .1);animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;"><span style="color:rgb(244 239 231 / .75);"><span lang="th">{{ x.th }}</span><span lang="en">{{ x.en }}</span></span><span style="font-weight:600;text-align:right;"><span lang="th">{{ x.vTh }}</span><span lang="en">{{ x.vEn }}</span></span></li>
+        </sc-for>
+      </ul>
+      <p style="margin:0;font-size:13px;line-height:1.6;color:rgb(244 239 231 / .65);text-wrap:pretty;"><span lang="th">{{ est.noteTh }} ตัวเลขนี้เป็นการประเมินเบื้องต้น ราคาจริงจะยืนยันในใบเสนอราคา</span><span lang="en">{{ est.noteEn }} This is a preliminary estimate; final pricing is confirmed in your quote.</span></p>
+      <a href="app.html" style="margin-top:auto;display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:12px;background:linear-gradient(110deg,#b8922a,#e6c677 40%,#fff3cf 50%,#e6c677 60%,#b8922a);background-size:250% 100%;animation:egSheen 4.5s linear infinite;color:#1b2a4a;box-shadow:0 12px 30px -10px rgb(216 179 92 / .7);font-size:16px;font-weight:600;text-decoration:none;" style-hover="transform:translateY(-2px);filter:brightness(1.06);"><span lang="th">ขอใบเสนอราคาจริง</span><span lang="en">Get an exact quote</span><span class="msr" style="font-size:20px;">arrow_forward</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="max-width:1200px;margin:0 auto;padding:clamp(64px,9vw,112px) clamp(16px,4vw,32px);">
+  <div style="position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(28px,4vw,56px);padding:clamp(28px,5vw,56px);border-radius:28px;background:radial-gradient(900px 520px at 88% -12%,rgb(216 179 92 / .28),transparent 60%),radial-gradient(760px 480px at -8% 110%,rgb(74 132 255 / .28),transparent 60%),linear-gradient(160deg,#1b2a4a 0%,#0f2142 55%,#0b1a36 100%);color:#f4efe7;box-shadow:0 30px 70px rgb(21 43 79 / .25);"><div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden;border-radius:inherit;">
+  <div style="position:absolute;width:420px;height:420px;right:-140px;top:-180px;border-radius:50%;background:radial-gradient(circle,rgb(216 179 92 / .38),transparent 65%);animation:egDrift 16s ease-in-out infinite alternate;"></div>
+  <div style="position:absolute;width:380px;height:380px;left:-140px;bottom:-200px;border-radius:50%;background:radial-gradient(circle,rgb(74 132 255 / .32),transparent 65%);animation:egDrift 21s ease-in-out infinite alternate-reverse;"></div>
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgb(255 255 255 / .05) 1px,transparent 1px),linear-gradient(90deg,rgb(255 255 255 / .05) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(ellipse at 75% 25%,#000 5%,transparent 65%);mask-image:radial-gradient(ellipse at 75% 25%,#000 5%,transparent 65%);"></div>
+  <div style="position:absolute;width:360px;height:360px;right:-120px;bottom:-200px;border-radius:50%;border:1px solid rgb(216 179 92 / .25);animation:egSpin 36s linear infinite;"><div style="position:absolute;top:50%;left:-5px;width:10px;height:10px;border-radius:50%;background:#e6c677;box-shadow:0 0 18px 2px #d8b35c;"></div></div>
+  <div style="position:absolute;width:240px;height:240px;right:-60px;bottom:-140px;border-radius:50%;border:1px dashed rgb(255 255 255 / .14);animation:egSpin 60s linear infinite reverse;"></div>
+</div>
+    <div style="display:flex;flex-direction:column;gap:18px;">
+      <span style="font-size:13px;font-weight:600;letter-spacing:.08em;color:#d8b35c;"><span lang="th">ติดต่อเรา</span><span lang="en">CONTACT</span></span>
+      <h2 style="margin:0;font-size:clamp(28px,3.6vw,40px);line-height:1.2;font-weight:600;letter-spacing:-.01em;text-wrap:balance;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 25%;"><span lang="th">เล่าโจทย์ของคุณให้เราฟัง</span><span lang="en">Tell us what you need</span></h2>
+      <p style="margin:0;font-size:17px;line-height:1.7;color:rgb(244 239 231 / .8);text-wrap:pretty;"><span lang="th">ทิ้งข้อมูลไว้ เจ้าหน้าที่จะติดต่อกลับภายใน 1 วันทำการ หรือสมัครบัญชีลูกค้าเพื่อขอใบเสนอราคาและติดตามงานได้เอง</span><span lang="en">Leave your details and we’ll call back within one business day — or open a customer account to request quotes and track jobs yourself.</span></p>
+      <div style="display:flex;flex-direction:column;gap:12px;padding:4px 0;">
+        <a href="tel:0651622828" style="display:flex;align-items:center;gap:12px;color:#f4efe7;text-decoration:none;font-size:16px;"><span class="msr" style="font-size:22px;color:#d8b35c;">call</span>065 162 2828</a>
+        <a href="mailto:everygates.co@gmail.com" style="display:flex;align-items:center;gap:12px;color:#f4efe7;text-decoration:none;font-size:16px;overflow-wrap:anywhere;"><span class="msr" style="font-size:22px;color:#d8b35c;">mail</span>everygates.co@gmail.com</a>
+        <span style="display:flex;align-items:flex-start;gap:12px;font-size:15px;line-height:1.6;color:rgb(244 239 231 / .85);"><span class="msr" style="font-size:22px;color:#d8b35c;">location_on</span><span><span lang="th">23/6 หมู่ 3 ต.อ้อมเกร็ด อ.ปากเกร็ด จ.นนทบุรี 11120</span><span lang="en">23/6 Moo 3, Om Kret, Pak Kret, Nonthaburi 11120</span></span></span>
+      </div>
+      <a href="app.html" style="align-self:flex-start;display:flex;align-items:center;gap:6px;color:#d8b35c;font-size:15px;font-weight:600;text-decoration:none;"><span lang="th">เข้าสู่ระบบลูกค้า</span><span lang="en">Customer sign in</span><span class="msr" style="font-size:18px;">arrow_forward</span></a>
+    </div>
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:20px;background:#f4efe7;color:#1b2a4a;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px;">
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:500;"><span><span lang="th">ชื่อ</span><span lang="en">Name</span> *</span>
+          <input value="{{ cName }}" onChange="{{ onName }}" style="height:48px;padding:0 14px;border-radius:10px;border:1px solid {{ nameBd }};background:#fff;color:#1b2a4a;font-size:15px;outline:none;"></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:500;"><span><span lang="th">เบอร์โทร</span><span lang="en">Phone</span> *</span>
+          <input value="{{ cPhone }}" onChange="{{ onPhone }}" inputmode="tel" placeholder="08x-xxx-xxxx" style="height:48px;padding:0 14px;border-radius:10px;border:1px solid {{ phoneBd }};background:#fff;color:#1b2a4a;font-size:15px;outline:none;"></label>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:500;"><span><span lang="th">บริษัท</span><span lang="en">Company</span></span>
+        <input value="{{ cCo }}" onChange="{{ onCo }}" style="height:48px;padding:0 14px;border-radius:10px;border:1px solid #d9d3c7;background:#fff;color:#1b2a4a;font-size:15px;outline:none;"></label>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <span style="font-size:14px;font-weight:500;"><span lang="th">สนใจบริการ</span><span lang="en">Interested in</span></span>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <sc-for list="{{ chips }}" as="c" hint-placeholder-count="5">
+            <button onClick="{{ c.pick }}" style="display:flex;align-items:center;gap:6px;height:38px;padding:0 12px;border-radius:999px;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font-size:14px;cursor:pointer;animation:egUp .9s cubic-bezier(.2,.7,.2,1) backwards;animation-timeline:view();animation-range:entry 0% cover 28%;"><span class="msr" style="font-size:18px;">{{ c.icon }}</span><span lang="th">{{ c.th }}</span><span lang="en">{{ c.en }}</span></button>
+          </sc-for>
+        </div>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:500;"><span><span lang="th">รายละเอียด</span><span lang="en">Message</span></span>
+        <textarea value="{{ cMsg }}" onChange="{{ onMsg }}" rows="3" style="padding:12px 14px;border-radius:10px;border:1px solid #d9d3c7;background:#fff;color:#1b2a4a;font-size:15px;line-height:1.55;outline:none;resize:vertical;"></textarea></label>
+      <sc-if value="{{ cErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:#b3261e;"><span lang="th">กรุณากรอกชื่อและเบอร์โทร 9–10 หลัก</span><span lang="en">Please enter your name and a 9–10 digit phone number</span></span></sc-if>
+      <button onClick="{{ submit }}" style="height:52px;border:0;border-radius:12px;background:#1b2a4a;color:#f4efe7;font-size:16px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;"><span lang="th">ส่งข้อมูล</span><span lang="en">Send</span><span class="msr" style="font-size:20px;">send</span></button>
+    </div>
+    </sc-if>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding:40px 24px;border-radius:20px;background:#f4efe7;color:#1b2a4a;">
+        <span class="msr" style="font-size:48px;color:#2e7d4f;">check_circle</span>
+        <span style="font-size:22px;font-weight:600;"><span lang="th">ได้รับข้อมูลแล้ว ขอบคุณครับ</span><span lang="en">Thank you — we’ve got it</span></span>
+        <span style="font-size:15px;line-height:1.6;color:#4a5872;"><span lang="th">เจ้าหน้าที่จะติดต่อกลับภายใน 1 วันทำการ</span><span lang="en">We’ll be in touch within one business day.</span></span>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="border-top:1px solid var(--line);background:var(--surface);">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding:32px clamp(16px,4vw,32px);">
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <img data-logo="light" src="assets/logo-full-light.svg" alt="everygate" style="height:30px;width:auto;align-self:flex-start;">
+      <img data-logo="dark" src="assets/logo-full-dark.svg" alt="everygate" style="height:30px;width:auto;align-self:flex-start;">
+      <span style="font-size:13px;line-height:1.6;color:var(--muted);"><span lang="th">บริษัท เอฟเวอรี่เกท จำกัด</span><span lang="en">Everygate Co., Ltd.</span> · <span lang="th">ทะเบียนเลขที่</span><span lang="en">Reg. no.</span> 0105562098953<br>© 2026 EVERYGATE</span>
+    </div>
+    <nav style="display:flex;flex-wrap:wrap;gap:4px 18px;">
+      <sc-for list="{{ links }}" as="l" hint-placeholder-count="5">
+        <a href="{{ l.href }}" style="font-size:14px;color:var(--muted);text-decoration:none;" style-hover="color:var(--ink);"><span lang="th">{{ l.th }}</span><span lang="en">{{ l.en }}</span></a>
+      </sc-for>
+    </nav>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: window.innerWidth, theme: localStorage.getItem('eg_theme') || 'light', lang: localStorage.getItem('eg_lang') || 'th', menu: false,
+    c: { name: '', phone: '', co: '', msg: '', lines: [] }, cErr: false, sent: false, svc: null, faq: 0, estK: 'mou', estV: {} };
+  componentDidMount() {
+    this.onR = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onR);
+    this.onH = () => { const m = location.hash.match(/^#service-(\w+)$/), k = m && this.SVC()[m[1]] ? m[1] : null; if (k !== this.state.svc) { const id = location.hash.slice(1); this.setState({ svc: k, faq: 0, menu: false, estK: k || this.state.estK }, () => { const go = () => { if (k) return window.scrollTo(0, 0); const el = id && document.getElementById(id); if (el) window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 70); }; requestAnimationFrame(go); setTimeout(go, 120); }); } };
+    window.addEventListener('hashchange', this.onH); this.onH();
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); window.removeEventListener('hashchange', this.onH); }
+  componentDidUpdate() { if (!this.state.svc && this.pendingScroll) { const id = this.pendingScroll; this.pendingScroll = null; const el = document.getElementById(id); if (el) window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 70); } }
+  EST() {
+    const o = (th, en, v) => ({ th, en, v }), f = n => '฿' + Math.round(n).toLocaleString('en-US'), L = (th, en, vTh, vEn) => ({ th, en, vTh, vEn: vEn ?? vTh });
+    return {
+      mou: { fields: [
+        { id: 'n', type: 'range', th: 'จำนวนแรงงาน', en: 'Workers', min: 1, max: 200, step: 1, def: 20, uTh: 'คน', uEn: 'people' },
+        { id: 'nat', type: 'choice', th: 'สัญชาติ', en: 'Nationality', def: 'mm', opts: [o('เมียนมา', 'Myanmar', 'mm'), o('ลาว', 'Laos', 'la'), o('กัมพูชา', 'Cambodia', 'kh')] },
+        { id: 't', type: 'choice', th: 'ประเภทงาน', en: 'Job type', def: 'new', opts: [o('นำเข้าใหม่', 'New import', 'new'), o('ต่ออายุเอกสาร', 'Renewal', 'ren')] }],
+        calc: v => { const p = v.t === 'ren' ? [6500, 8500] : { mm: [17000, 21000], la: [15500, 19000], kh: [16500, 20000] }[v.nat], d = v.t === 'ren' ? [15, 30] : { mm: [60, 90], la: [45, 75], kh: [50, 80] }[v.nat], add = Math.floor(v.n / 50) * 7;
+          return { lo: p[0] * v.n, hi: p[1] * v.n, d: [d[0] + add, d[1] + add], u: 'd', lines: [L('ค่าบริการต่อคน', 'Per worker', f(p[0]) + '–' + f(p[1])), L('จำนวน', 'Headcount', v.n + ' คน', v.n + ' people')], noteTh: 'รวมค่าเอกสาร ใบอนุญาตทำงาน และตรวจสุขภาพ', noteEn: 'Includes papers, work permit and medical check.' }; } },
+      solar: { fields: [
+        { id: 'bill', type: 'range', th: 'ค่าไฟต่อเดือน', en: 'Monthly power bill', min: 10000, max: 1000000, step: 5000, def: 80000, money: true },
+        { id: 'roof', type: 'choice', th: 'ประเภทหลังคา', en: 'Roof type', def: 'metal', opts: [o('เมทัลชีท', 'Metal sheet', 'metal'), o('คอนกรีต', 'Concrete', 'conc'), o('ติดตั้งบนพื้น', 'Ground mount', 'ground')] }],
+        calc: v => { const kw = Math.max(5, Math.round(v.bill * 0.7 / (4.4 * 120))), m = { metal: 1, conc: 1.06, ground: 1.12 }[v.roof], lo = kw * 24000 * m, hi = kw * 30000 * m, sv = kw * 120 * 4.4, d = kw < 100 ? [30, 60] : kw < 500 ? [60, 90] : [90, 150];
+          return { lo, hi, d, u: 'd', lines: [L('ขนาดระบบแนะนำ', 'Suggested system', kw + ' kWp'), L('ประหยัดได้ต่อเดือน', 'Monthly savings', '~' + f(sv)), L('ระยะคืนทุน', 'Payback', (lo / sv / 12).toFixed(1) + '–' + (hi / sv / 12).toFixed(1) + ' ปี', (lo / sv / 12).toFixed(1) + '–' + (hi / sv / 12).toFixed(1) + ' yrs')], noteTh: 'รวมอุปกรณ์ ติดตั้ง และขออนุญาต', noteEn: 'Includes equipment, installation and permits.' }; } },
+      trade: { fields: [
+        { id: 'dir', type: 'choice', th: 'ประเภท', en: 'Direction', def: 'imp', opts: [o('นำเข้า', 'Import', 'imp'), o('ส่งออก', 'Export', 'exp')] },
+        { id: 'mode', type: 'choice', th: 'รูปแบบขนส่ง', en: 'Shipping mode', def: 'fcl20', opts: [o('ตู้ 20 ฟุต', '20ft FCL', 'fcl20'), o('ตู้ 40 ฟุต', '40ft FCL', 'fcl40'), o('LCL', 'LCL', 'lcl'), o('ทางอากาศ', 'Air', 'air')] },
+        { id: 'n', type: 'range', th: 'จำนวนชิปเมนต์ต่อเดือน', en: 'Shipments per month', min: 1, max: 30, step: 1, def: 2, uTh: 'ครั้ง', uEn: 'shipments' }],
+        calc: v => { const p = { fcl20: [4500, 7000], fcl40: [6000, 9000], lcl: [3500, 5500], air: [3000, 5000] }[v.mode].map(x => x + (v.dir === 'imp' ? 1500 : 0)), d = { fcl20: [5, 10], fcl40: [5, 10], lcl: [7, 14], air: [2, 4] }[v.mode].map(x => v.dir === 'exp' ? Math.max(1, x - 2) : x);
+          return { lo: p[0] * v.n, hi: p[1] * v.n, d, u: 'd', perTh: ' (ต่อเดือน)', perEn: ' (per month)', lines: [L('ค่าบริการต่อชิปเมนต์', 'Per shipment', f(p[0]) + '–' + f(p[1])), L('เวลาต่อชิปเมนต์', 'Time per shipment', d[0] + '–' + d[1] + ' วัน', d[0] + '–' + d[1] + ' days')], noteTh: 'ค่าพิธีการศุลกากรและเอกสาร ไม่รวมค่าขนส่งและภาษีอากร', noteEn: 'Customs and paperwork; excludes freight and duties.' }; } },
+      property: { fields: [
+        { id: 't', type: 'choice', th: 'บริการ', en: 'Service', def: 'sell', opts: [o('ขาย / ปล่อยเช่า', 'Sell / lease out', 'sell'), o('ตรวจสอบก่อนซื้อ', 'Pre-purchase check', 'dd'), o('ดำเนินการโอน', 'Title transfer', 'tr')] },
+        { id: 'val', type: 'range', th: 'มูลค่าทรัพย์สิน', en: 'Property value', min: 1000000, max: 100000000, step: 500000, def: 10000000, money: true }],
+        calc: v => { const c = { sell: [0.03, 0.03, 0, [60, 180]], dd: [0.003, 0.005, 15000, [7, 14]], tr: [0.002, 0.004, 10000, [7, 21]] }[v.t];
+          return { lo: Math.max(c[2], v.val * c[0]), hi: Math.max(c[2], v.val * c[1]), d: c[3], u: 'd', lines: [L('อัตราค่าบริการ', 'Fee rate', (c[0] * 100) + (c[1] !== c[0] ? '–' + (c[1] * 100) : '') + '%' + (c[2] ? ' (ขั้นต่ำ ' + f(c[2]) + ')' : ''), (c[0] * 100) + (c[1] !== c[0] ? '–' + (c[1] * 100) : '') + '%' + (c[2] ? ' (min ' + f(c[2]) + ')' : ''))], noteTh: v.t === 'sell' ? 'ค่านายหน้าชำระเมื่อปิดการขายได้' : 'ไม่รวมค่าธรรมเนียมและภาษีของกรมที่ดิน', noteEn: v.t === 'sell' ? 'Commission is paid only on closing.' : 'Excludes Land Department fees and taxes.' }; } },
+      build: { fields: [
+        { id: 't', type: 'choice', th: 'ประเภทงาน', en: 'Project type', def: 'wh', opts: [o('โกดัง', 'Warehouse', 'wh'), o('โรงงาน', 'Factory', 'fac'), o('สำนักงาน', 'Office', 'off'), o('รีโนเวท', 'Renovation', 'ren')] },
+        { id: 'a', type: 'range', th: 'พื้นที่ใช้สอย', en: 'Floor area', min: 50, max: 10000, step: 50, def: 500, uTh: 'ตร.ม.', uEn: 'sqm' }],
+        calc: v => { const p = { wh: [7000, 10000], fac: [9000, 13000], off: [12000, 18000], ren: [4000, 8000] }[v.t], lo = Math.max(1, Math.round((v.t === 'ren' ? 1 : 2) + v.a / 800));
+          return { lo: p[0] * v.a, hi: p[1] * v.a, d: [lo, Math.ceil(lo * 1.5)], u: 'm', lines: [L('ราคาต่อ ตร.ม.', 'Per sqm', f(p[0]) + '–' + f(p[1])), L('พื้นที่', 'Area', v.a.toLocaleString('en-US') + ' ตร.ม.', v.a.toLocaleString('en-US') + ' sqm')], noteTh: 'รวมออกแบบ วัสดุ และค่าแรง ไม่รวมค่าที่ดิน', noteEn: 'Includes design, materials and labour; excludes land.' }; } },
+      legal: { fields: [
+        { id: 't', type: 'choice', th: 'บริการ', en: 'Service', def: 'ct', opts: [o('ตรวจ/ร่างสัญญา', 'Contract review', 'ct'), o('จดทะเบียนบริษัท', 'Company setup', 'reg'), o('ขอใบอนุญาต', 'Business licence', 'lic'), o('ที่ปรึกษารายเดือน', 'Monthly retainer', 'ret')] },
+        { id: 'n', type: 'range', th: 'จำนวน', en: 'Quantity', min: 1, max: 20, step: 1, def: 1, uTh: 'รายการ', uEn: 'items' }],
+        calc: v => { const c = { ct: [3000, 8000, [2, 5], 'd'], reg: [12000, 20000, [7, 14], 'd'], lic: [15000, 40000, [30, 90], 'd'], ret: [15000, 35000, [1, 3], 'd'] }[v.t];
+          return { lo: c[0] * v.n, hi: c[1] * v.n, d: c[2], u: c[3], lines: [L(v.t === 'ret' ? 'ค่าบริการต่อเดือน' : 'ค่าบริการต่อรายการ', v.t === 'ret' ? 'Per month' : 'Per item', f(c[0]) + '–' + f(c[1]))], noteTh: v.t === 'ret' ? 'ระยะเวลาคือเริ่มให้คำปรึกษาได้ภายใน' : 'ไม่รวมค่าธรรมเนียมราชการ', noteEn: v.t === 'ret' ? 'Timeline shows how soon we can start.' : 'Excludes government fees.' }; } }
+    };
+  }
+  SVC() {
+    const t = (th, en) => ({ th: th, en: en });
+    return {
+      mou: {
+        hTh: 'แรงงานต่างด้าวถูกกฎหมาย พร้อมเริ่มงานจริง', hEn: 'Legal foreign workers, ready to start',
+        iTh: 'เราจัดหาแรงงานเมียนมา ลาว และกัมพูชาผ่านระบบ MOU ระหว่างรัฐ ดูแลเอกสารทุกขั้นตอนตั้งแต่ยื่นความต้องการจนแรงงานเริ่มงาน และดูแลต่อเนื่องตลอดสัญญาจ้าง', iEn: 'We recruit workers from Myanmar, Laos and Cambodia through the government-to-government MOU system, handling every document from your request to their first day — and throughout the contract.',
+        who: [Object.assign(t('โรงงานและสายการผลิตที่ต้องการแรงงานจำนวนมาก', 'Factories and production lines needing many workers'), { icon: 'factory' }), Object.assign(t('ธุรกิจก่อสร้าง เกษตร ประมง และบริการ', 'Construction, agriculture, fishery and services'), { icon: 'agriculture' }), Object.assign(t('นายจ้างที่มีแรงงานอยู่แล้วและต้องการต่ออายุเอกสาร', 'Employers renewing existing workers’ papers'), { icon: 'autorenew' })],
+        subTh: 'ดูแลครบตั้งแต่ต้นทางถึงปลายทาง', subEn: 'Covered end to end',
+        subs: [
+          Object.assign(t('จัดหาแรงงานใหม่ผ่าน MOU', 'New MOU recruitment'), { icon: 'person_search', dTh: 'คัดเลือกแรงงานตามตำแหน่ง ทักษะ และจำนวนที่ต้องการ ประสานบริษัทจัดหางานต้นทาง', dEn: 'Selection by role, skills and headcount, coordinated with source-country agencies.' }),
+          Object.assign(t('ยื่นเอกสารและขอใบอนุญาตทำงาน', 'Filing & work permits'), { icon: 'badge', dTh: 'ยื่นคำร้องกับกรมการจัดหางาน ทำสัญญาจ้างตามแบบ และดำเนินการใบอนุญาตทำงาน', dEn: 'Applications to the Department of Employment, prescribed contracts and work permits.' }),
+          Object.assign(t('ต่อวีซ่าและใบอนุญาต', 'Visa & permit renewals'), { icon: 'event_repeat', dTh: 'แจ้งเตือนล่วงหน้าก่อนเอกสารหมดอายุ และดำเนินการต่ออายุให้ทั้งชุด', dEn: 'Early reminders before expiry and batch renewals.' }),
+          Object.assign(t('รายงานตัวและแจ้งเข้า-ออก', 'Reporting & notifications'), { icon: 'fact_check', dTh: 'ดูแลการรายงานตัว 90 วัน และแจ้งเข้า-ออกงานตามที่กฎหมายกำหนด', dEn: '90-day reporting and employment start/exit notifications.' }),
+          Object.assign(t('ตรวจสุขภาพและประกัน', 'Health checks & insurance'), { icon: 'health_and_safety', dTh: 'นัดตรวจสุขภาพและจัดทำประกันสุขภาพหรือประกันสังคมตามสิทธิ์', dEn: 'Medical checks and health insurance or social security enrolment.' }),
+          Object.assign(t('ปฐมนิเทศและล่าม', 'Orientation & interpreters'), { icon: 'translate', dTh: 'ปฐมนิเทศกฎระเบียบการทำงาน และมีล่ามช่วยสื่อสารเมื่อจำเป็น', dEn: 'Workplace orientation, with interpreters when needed.' })
+        ],
+        steps: [t('แจ้งความต้องการ', 'Tell us your needs'), t('ยื่นคำร้องนำเข้า', 'File the import request'), t('คัดเลือกและเตรียมเอกสาร', 'Select & prepare papers'), t('เดินทางและอบรม', 'Travel & training'), t('เริ่มงานและดูแลต่อ', 'Start work & ongoing care')].map((x, i) => Object.assign(x, { n: i + 1,
+          dTh: ['จำนวน ตำแหน่ง สัญชาติ และวันที่ต้องการให้เริ่มงาน', 'เรายื่นเอกสารนายจ้างกับหน่วยงานที่เกี่ยวข้อง', 'สัมภาษณ์ คัดเลือก และจัดทำเอกสารฝั่งต้นทาง', 'ตรวจสุขภาพ รับใบอนุญาต และอบรมก่อนเริ่มงาน', 'ติดตามเอกสารและแจ้งเตือนทุกกำหนดในระบบ'][i],
+          dEn: ['Headcount, roles, nationality and start date', 'We file employer documents with the authorities', 'Interviews, selection and source-country papers', 'Medical check, permits and pre-work training', 'Paperwork tracked and every deadline reminded in-app'][i] })),
+        docTh: 'เอกสารที่นายจ้างต้องเตรียม', docEn: 'What employers need to prepare',
+        docs: [t('หนังสือรับรองบริษัท (อายุไม่เกิน 6 เดือน)', 'Company affidavit (within 6 months)'), t('สำเนาบัตรประชาชนและทะเบียนบ้านกรรมการ', 'Director ID and house registration copies'), t('แผนที่ตั้งสถานประกอบการและที่พักแรงงาน', 'Maps of workplace and worker housing'), t('หนังสือมอบอำนาจ', 'Power of attorney'), t('รายละเอียดตำแหน่งงานและค่าจ้าง', 'Job details and wages')],
+        faq: [
+          { qTh: 'ใช้เวลานานแค่ไหนกว่าแรงงานจะเริ่มงาน?', qEn: 'How long until workers can start?', aTh: 'ขึ้นอยู่กับสัญชาติและจำนวนแรงงาน โดยทั่วไปใช้เวลาประมาณ 1-3 เดือน เราจะแจ้งกำหนดการที่ชัดเจนในใบเสนอราคา', aEn: 'It depends on nationality and headcount, typically about 1–3 months. Your quote includes a clear timeline.' },
+          { qTh: 'ถ้าแรงงานลาออกหรือหนีงานต้องทำอย่างไร?', qEn: 'What if a worker quits or leaves?', aTh: 'นายจ้างต้องแจ้งออกตามที่กฎหมายกำหนด เราดำเนินการแจ้งให้ และช่วยจัดหาแรงงานทดแทนตามเงื่อนไขในสัญญา', aEn: 'The employer must report the exit by law. We file it for you and help find a replacement under your contract terms.' },
+          { qTh: 'ติดตามสถานะเอกสารได้อย่างไร?', qEn: 'How do I track paperwork?', aTh: 'ทุกงานมีสถานะในระบบลูกค้าของเรา พร้อมแจ้งเตือนเมื่อมีความคืบหน้าหรือเอกสารใกล้หมดอายุ', aEn: 'Every job has a live status in our customer system, with alerts on progress and upcoming expiries.' }
+        ],
+        imgs: ['แรงงานในโรงงาน', 'ทีมงานตรวจเอกสาร', 'การปฐมนิเทศแรงงาน']
+      },
+      solar: {
+        hTh: 'ลดค่าไฟด้วยโซลาร์ ออกแบบให้คุ้มกับธุรกิจคุณ', hEn: 'Cut power costs with solar, sized for your business',
+        iTh: 'เราออกแบบและติดตั้งระบบโซลาร์เซลล์สำหรับโรงงาน อาคารพาณิชย์ และโกดัง ตั้งแต่สำรวจการใช้ไฟ คำนวณความคุ้มค่า ขออนุญาต ไปจนถึงดูแลบำรุงรักษาหลังติดตั้ง', iEn: 'We design and install solar for factories, commercial buildings and warehouses — from load survey and payback analysis to permits and after-install maintenance.',
+        who: [Object.assign(t('โรงงานที่ใช้ไฟฟ้ามากในช่วงกลางวัน', 'Factories with heavy daytime load'), { icon: 'factory' }), Object.assign(t('อาคารสำนักงาน ห้างร้าน และโกดัง', 'Offices, retail and warehouses'), { icon: 'store' }), Object.assign(t('ธุรกิจที่ต้องการลดต้นทุนและปล่อยคาร์บอนน้อยลง', 'Businesses cutting costs and carbon'), { icon: 'eco' })],
+        subTh: 'ครบทุกขั้นของระบบโซลาร์', subEn: 'Every stage of a solar system',
+        subs: [
+          Object.assign(t('สำรวจและวิเคราะห์ความคุ้มค่า', 'Survey & payback analysis'), { icon: 'query_stats', dTh: 'ดูบิลค่าไฟย้อนหลังและพื้นที่หลังคา คำนวณขนาดระบบและระยะคืนทุน', dEn: 'Past bills and roof review to size the system and estimate payback.' }),
+          Object.assign(t('ออกแบบระบบ', 'System design'), { icon: 'architecture', dTh: 'ออกแบบผังแผง อินเวอร์เตอร์ และโครงสร้างรองรับให้เหมาะกับหลังคา', dEn: 'Panel layout, inverters and mounting designed for your roof.' }),
+          Object.assign(t('ขออนุญาตทั้งหมด', 'All permits'), { icon: 'approval', dTh: 'ยื่นขออนุญาตกับการไฟฟ้า หน่วยงานท้องถิ่น และหน่วยงานกำกับที่เกี่ยวข้อง', dEn: 'Filings with the utility, local authority and regulators.' }),
+          Object.assign(t('ติดตั้งโดยทีมวิศวกร', 'Engineer-led installation'), { icon: 'solar_power', dTh: 'ติดตั้งตามมาตรฐานความปลอดภัย พร้อมทดสอบระบบก่อนส่งมอบ', dEn: 'Installed to safety standards and tested before handover.' }),
+          Object.assign(t('ระบบติดตามการผลิตไฟ', 'Production monitoring'), { icon: 'monitoring', dTh: 'ดูข้อมูลการผลิตไฟฟ้าผ่านแอปได้ตลอดเวลา', dEn: 'See generation data in an app, any time.' }),
+          Object.assign(t('บำรุงรักษารายปี', 'Annual maintenance'), { icon: 'cleaning_services', dTh: 'ล้างแผง ตรวจเช็กระบบ และแก้ไขปัญหาตามสัญญาบำรุงรักษา', dEn: 'Panel cleaning, inspections and fixes under a maintenance contract.' })
+        ],
+        steps: [t('สำรวจหน้างาน', 'Site survey'), t('เสนอแบบและราคา', 'Design & quote'), t('ขออนุญาต', 'Permits'), t('ติดตั้งและทดสอบ', 'Install & test'), t('ส่งมอบและดูแล', 'Handover & care')].map((x, i) => Object.assign(x, { n: i + 1,
+          dTh: ['ดูหลังคา ระบบไฟ และบิลค่าไฟ', 'ขนาดระบบ ผลประหยัดโดยประมาณ และระยะคืนทุน', 'เราดำเนินการยื่นเอกสารทั้งหมดให้', 'ติดตั้งโดยไม่รบกวนการทำงานของคุณ', 'สอนใช้งาน มอบเอกสาร และเริ่มสัญญาดูแล'][i],
+          dEn: ['Roof, electrical system and bills', 'System size, estimated savings and payback', 'We file every document for you', 'Installed around your operations', 'Training, documents and maintenance starts'][i] })),
+        docTh: 'ข้อมูลที่ช่วยให้เสนอราคาได้เร็ว', docEn: 'Helps us quote faster',
+        docs: [t('บิลค่าไฟฟ้าย้อนหลัง 12 เดือน', '12 months of electricity bills'), t('แบบแปลนหรือรูปถ่ายหลังคา', 'Roof drawings or photos'), t('ช่วงเวลาที่ใช้ไฟฟ้ามากที่สุด', 'Your peak-usage hours'), t('เอกสารสิทธิ์อาคารหรือสัญญาเช่า', 'Building title or lease'), t('หนังสือรับรองบริษัท', 'Company affidavit')],
+        faq: [
+          { qTh: 'คืนทุนภายในกี่ปี?', qEn: 'What’s the payback period?', aTh: 'ขึ้นอยู่กับขนาดระบบ อัตราค่าไฟ และช่วงเวลาที่ใช้ไฟ เราจะคำนวณระยะคืนทุนจากข้อมูลจริงของคุณในใบเสนอราคา', aEn: 'It depends on system size, tariff and usage pattern. We calculate payback from your real data in the quote.' },
+          { qTh: 'หลังคาเก่ารับน้ำหนักได้ไหม?', qEn: 'Can an older roof carry the panels?', aTh: 'วิศวกรจะตรวจโครงสร้างหลังคาก่อนออกแบบ หากจำเป็นจะเสนอวิธีเสริมความแข็งแรง', aEn: 'Our engineers check the roof structure first and propose reinforcement if needed.' },
+          { qTh: 'มีบริการหลังการขายอย่างไร?', qEn: 'What after-sales support is there?', aTh: 'มีสัญญาบำรุงรักษารายปี ครอบคลุมการล้างแผง ตรวจเช็กระบบ และแก้ไขปัญหา พร้อมติดตามผ่านระบบลูกค้า', aEn: 'Annual maintenance covers cleaning, inspections and repairs, tracked in our customer system.' }
+        ],
+        imgs: ['แผงโซลาร์บนหลังคาโรงงาน', 'วิศวกรติดตั้งแผง', 'หน้าจอติดตามการผลิตไฟ']
+      }
+    };
+  }
+  set(k, v) { this.setState({ [k]: v }); localStorage.setItem('eg_' + k, v); }
+  up(p) { this.setState(s => ({ c: { ...s.c, ...p }, cErr: false })); }
+  renderVals() {
+    const s = this.state, wide = s.w >= 960, SV = this.SVC();
+    const PH = { hero: { src: 'img/hero.jpg' }, mou: { src: 'img/mou.jpg' }, solar: { src: 'img/solar.jpg' }, trade: { src: 'img/trade.jpg' }, property: { src: 'img/property.jpg' }, build: { src: 'img/build.jpg' }, legal: { src: 'img/legal.jpg' } };
+    const GAL = { mou: [PH.mou, PH.legal, PH.property], solar: [PH.solar, PH.build, PH.property], trade: [PH.trade, PH.property, PH.build], property: [PH.property, PH.build, PH.trade], build: [PH.build, PH.solar, PH.property], legal: [PH.legal, PH.mou, PH.hero] };
+    const seg = on => ({ bg: on ? 'var(--surface)' : 'transparent', fg: on ? 'var(--ink)' : 'var(--muted)' });
+    const a = seg(s.lang === 'th'), b = seg(s.lang === 'en');
+    const L = [
+      { k: 'mou', icon: 'groups', th: 'แรงงาน MOU', en: 'MOU Labor', h: 25, dTh: 'จัดหาแรงงานต่างด้าวถูกกฎหมายผ่านระบบ MOU พร้อมดูแลเอกสารตลอดสัญญาจ้าง', dEn: 'Legal foreign workers through the MOU system, with paperwork handled for the whole contract.',
+        items: [['จัดหาแรงงานตามตำแหน่ง', 'Recruitment by position'], ['ต่อวีซ่า ใบอนุญาตทำงาน', 'Visa & work-permit renewal'], ['ดูแลเอกสารและรายงานตัว', 'Documents & reporting']] },
+      { k: 'solar', icon: 'solar_power', th: 'โซลาร์เซลล์', en: 'Solar Energy', h: 80, dTh: 'ลดค่าไฟของโรงงานและอาคารด้วยระบบโซลาร์ ตั้งแต่สำรวจหน้างานจนขออนุญาตเสร็จ', dEn: 'Cut power costs for factories and buildings — from site survey to permits.',
+        items: [['สำรวจและออกแบบระบบ', 'Survey & system design'], ['ติดตั้งโซลาร์รูฟท็อป', 'Rooftop installation'], ['บำรุงรักษาและขออนุญาต', 'Maintenance & permits']] },
+      { k: 'trade', icon: 'sailing', th: 'นำเข้า-ส่งออก', en: 'Import-Export', h: 230, dTh: 'ดูแลการขนส่งระหว่างประเทศและพิธีการศุลกากร ให้สินค้าถึงมือตรงเวลา', dEn: 'International freight and customs clearance, so goods arrive on time.',
+        items: [['ชิปปิ้งและพิธีการศุลกากร', 'Shipping & customs'], ['ขนส่งทางเรือ / อากาศ', 'Sea & air freight'], ['ขนส่งถึงโรงงาน', 'Door-to-factory delivery']] },
+      { k: 'property', icon: 'apartment', th: 'อสังหาริมทรัพย์', en: 'Property', h: 310, dTh: 'ซื้อ ขาย เช่า และประเมินราคาที่ดิน อาคาร โรงงาน สำหรับธุรกิจ', dEn: 'Buy, sell, lease and appraise land, buildings and factories for business.',
+        items: [['หาทำเลสำหรับธุรกิจ', 'Business site search'], ['ซื้อขายและเช่า', 'Sales & leasing'], ['ประเมินราคาทรัพย์สิน', 'Property appraisal']] },
+      { k: 'build', icon: 'construction', th: 'ก่อสร้าง / วิศวกรรม', en: 'Construction', h: 155, dTh: 'ออกแบบและก่อสร้างอาคาร โกดัง โรงงาน รวมถึงงานระบบไฟฟ้าและวิศวกรรม', dEn: 'Design and build offices, warehouses and factories, including electrical and M&E.',
+        items: [['ออกแบบและขออนุญาต', 'Design & permits'], ['ก่อสร้างโกดัง / อาคาร', 'Warehouses & buildings'], ['งานระบบไฟฟ้าอาคาร', 'Electrical systems']] },
+      { k: 'legal', icon: 'gavel', th: 'ที่ปรึกษากฎหมาย', en: 'Legal Advisory', h: 270, dTh: 'ดูแลงานกฎหมายธุรกิจ ตั้งแต่ร่างและตรวจสัญญา จดทะเบียน จนถึงใบอนุญาต พร้อมผู้ช่วย AI ตรวจเบื้องต้นให้ก่อน', dEn: 'Business law from drafting and reviewing contracts to registrations and licences — with an AI assistant for a first pass.',
+        items: [['ร่างและตรวจสัญญา', 'Contract drafting & review'], ['จดทะเบียนและแก้ไขบริษัท', 'Company registration & changes'], ['ใบอนุญาตและกฎหมายแรงงาน', 'Licences & labor law']] }
+    ].map((l, i) => ({ ...l, src: PH[l.k].src, color2: 'oklch(0.74 0.15 ' + (l.h + 30) + ')', imgId: 'home-svc-' + l.k, imgPh: { mou: 'ภาพแรงงานในโรงงาน', solar: 'ภาพแผงโซลาร์บนหลังคา', trade: 'ภาพท่าเรือ / ตู้คอนเทนเนอร์', property: 'ภาพอาคาร / ที่ดิน', build: 'ภาพไซต์ก่อสร้าง', legal: 'ภาพทนาย / การเซ็นสัญญา' }[l.k], ready: !!SV[l.k], href: SV[l.k] ? '#service-' + l.k : '#contact', ctaTh: SV[l.k] ? 'ดูรายละเอียด' : 'ปรึกษาทีมงาน', ctaEn: SV[l.k] ? 'View details' : 'Talk to our team', no: '0' + (i + 1), color: 'oklch(0.6 0.17 ' + l.h + ')', soft: 'oklch(0.66 0.14 ' + l.h + ' / .14)', items: l.items.map(x => ({ th: x[0], en: x[1] })) }));
+    const P = [
+      { name: 'Lite', price: '฿299', q: '1,500', qa: '150', hot: false },
+      { name: 'Pro', price: '฿790', q: '30,000', qa: '3,000', hot: true },
+      { name: 'Business', price: '฿1,990', q: '100,000', qa: '10,000', hot: false }
+    ].map(p => ({ ...p,
+      bg: p.hot ? '#1b2a4a' : 'var(--bg)', fg: p.hot ? '#f4efe7' : 'var(--ink)', bd: p.hot ? '#1b2a4a' : 'var(--line)', chk: p.hot ? '#d8b35c' : 'var(--gold)',
+      btnBg: p.hot ? '#d8b35c' : 'transparent', btnFg: p.hot ? '#1b2a4a' : 'var(--ink)', btnBd: p.hot ? '#d8b35c' : 'var(--line)',
+      feats: [{ th: 'เครดิต AI ' + p.q + ' / เดือน (≈ แชต ' + p.qa + ' ข้อความ)', en: p.q + ' AI credits / month (≈ ' + p.qa + ' chats)' }, { th: 'แชท งาน และปฏิทิน', en: 'Chat, tasks & calendar' }, { th: 'รู้ข้อมูลใบเสนอราคาของคุณ', en: 'Knows your quotes' }] }));
+    const c = s.c, ok = c.name.trim() && /^0\d{8,9}$/.test(c.phone.replace(/[\s-]/g, ''));
+    const red = '#b3261e';
+    return {
+      theme: s.theme, lang: s.lang, wide: wide, narrow: !wide, menuOpen: !wide && s.menu,
+      toggleMenu: () => this.setState({ menu: !s.menu }), closeMenu: () => this.setState({ menu: false }), menuIcon: s.menu ? 'close' : 'menu',
+      thBg: a.bg, thFg: a.fg, enBg: b.bg, enFg: b.fg, setTh: () => this.set('lang', 'th'), setEn: () => this.set('lang', 'en'),
+      toggleTheme: () => this.set('theme', s.theme === 'light' ? 'dark' : 'light'), themeIcon: s.theme === 'light' ? 'dark_mode' : 'light_mode',
+      links: [
+        { href: '#services', icon: 'grid_view', th: 'บริการ', en: 'Services' },
+        { href: '#process', icon: 'route', th: 'วิธีการทำงาน', en: 'How it works' },
+        { href: '#story', icon: 'history_edu', th: 'เรื่องราวของเรา', en: 'Our story' },
+        { href: '#secretary', icon: 'auto_awesome', th: 'เลขา AI', en: 'AI Secretary' },
+        { href: '#contact', icon: 'call', th: 'ติดต่อเรา', en: 'Contact' }
+      ],
+      lines: L, plans: P,
+      ...(() => {
+        const E = this.EST(), k = E[s.estK] ? s.estK : 'mou', cfg = E[k], sv = s.estV[k] || {}, v = {};
+        cfg.fields.forEach(fd => v[fd.id] = sv[fd.id] ?? fd.def);
+        const setV = (id, x) => this.setState(st => ({ estV: { ...st.estV, [k]: { ...(st.estV[k] || {}), [id]: x } } }));
+        const r = cfg.calc(v), f = n => '฿' + Math.round(n).toLocaleString('en-US'), un = r.u === 'm' ? ['เดือน', 'months'] : ['วัน', 'days'];
+        return {
+          estTabs: L.map(l => { const on = l.k === k; return { icon: l.icon, th: l.th, en: l.en, pick: () => this.setState({ estK: l.k }), bg: on ? 'var(--accent)' : 'var(--surface)', fg: on ? 'var(--accent-ink)' : 'var(--ink)', bd: on ? 'var(--accent)' : 'var(--line)', ic: on ? 'var(--accent-ink)' : l.color }; }),
+          estFields: cfg.fields.map(fd => ({ ...fd, isRange: fd.type === 'range', isChoice: fd.type === 'choice', val: v[fd.id],
+            dispTh: fd.money ? f(v[fd.id]) : v[fd.id].toLocaleString('en-US') + ' ' + (fd.uTh || ''), dispEn: fd.money ? f(v[fd.id]) : v[fd.id].toLocaleString('en-US') + ' ' + (fd.uEn || ''),
+            change: e => setV(fd.id, Number(e.target.value)),
+            opts: (fd.opts || []).map(op => { const on = v[fd.id] === op.v; return { ...op, pick: () => setV(fd.id, op.v), bg: on ? 'var(--accent)' : 'transparent', fg: on ? 'var(--accent-ink)' : 'var(--ink)', bd: on ? 'var(--accent)' : 'var(--line)' }; }) })),
+          est: { cost: f(r.lo) + ' – ' + f(r.hi), vat: f(r.lo * 1.03) + ' – ' + f(r.hi * 1.03), perTh: r.perTh || '', perEn: r.perEn || '', timeTh: 'ประมาณ ' + r.d[0] + '–' + r.d[1] + ' ' + un[0], timeEn: 'About ' + r.d[0] + '–' + r.d[1] + ' ' + un[1], lines: r.lines, noteTh: r.noteTh, noteEn: r.noteEn }
+        };
+      })(),
+      isSvc: !!s.svc, notSvc: !s.svc,
+      sv: (() => { const l = L.find(x => x.k === s.svc), d = SV[s.svc]; return l && d ? { ...d, icon: l.icon, th: l.th, en: l.en, color: l.color, soft: l.soft } : { who: [], subs: [], steps: [], docs: [] }; })(),
+      heroSlots: Object.keys(SV).map(k => ({ id: 'svc-' + k + '-hero', on: s.svc === k, ph: SV[k].imgs[0], src: GAL[k][0].src })),
+      galSlots: Object.keys(SV).flatMap(k => [1, 2].map(i => ({ id: 'svc-' + k + '-g' + i, on: s.svc === k, ph: SV[k].imgs[i], src: GAL[k][i].src, col: i === 1 ? '1 / 2' : '2 / 3', row: i === 1 ? '1 / 3' : '1 / 3' }))),
+      faq: s.svc && SV[s.svc] ? SV[s.svc].faq.map((f, i) => ({ ...f, open: s.faq === i, icon: s.faq === i ? 'remove' : 'add', bd: i ? '1px solid var(--line)' : '0', toggle: () => this.setState({ faq: s.faq === i ? -1 : i }) })) : [],
+      others: L.filter(l => l.k !== s.svc).map(l => ({ href: SV[l.k] ? '#service-' + l.k : '#services', icon: l.icon, th: l.th, en: l.en, color: l.color, soon: !SV[l.k] })),
+      steps: [
+        { n: 1, th: 'ส่งคำขอ', en: 'Send a request', dTh: 'เลือกบริการและเล่ารายละเอียดงานผ่านระบบออนไลน์ ใช้เวลาไม่กี่นาที', dEn: 'Pick a service and describe the job online — it takes minutes.' },
+        { n: 2, th: 'รับใบเสนอราคา', en: 'Get your quote', dTh: 'เจ้าหน้าที่ประเมินงานและส่งราคาให้ในระบบ คุณได้รับแจ้งเตือนทันที', dEn: 'Our team assesses the job and sends a price — you’re notified instantly.' },
+        { n: 3, th: 'อนุมัติและเริ่มงาน', en: 'Approve & start', dTh: 'ยืนยันราคา แล้วทีมผู้เชี่ยวชาญของเราเริ่มดำเนินงาน', dEn: 'Confirm the price and our specialists get to work.' },
+        { n: 4, th: 'ติดตามจนส่งมอบ', en: 'Track to handover', dTh: 'ดูความคืบหน้าและประวัติทุกขั้นได้เองจนงานเสร็จ', dEn: 'Follow progress and every update until the job is done.' }
+      ],
+      legalAi: [
+        { icon: 'contract', th: 'ตรวจสัญญาเบื้องต้น', en: 'Contract first-pass', dTh: 'วางข้อความสัญญา AI สรุปสาระสำคัญ ชี้ข้อที่เสี่ยง และข้อที่ควรมีเพิ่ม', dEn: 'Paste a contract — get a summary, risky clauses and what’s missing.' },
+        { icon: 'quiz', th: 'ถามกฎหมายธุรกิจ', en: 'Ask business-law questions', dTh: 'แรงงานต่างด้าว ภาษี ใบอนุญาต ได้คำตอบภาษาง่าย พร้อมบอกว่าเมื่อไหร่ควรคุยกับทนาย', dEn: 'Foreign labor, tax, licences — plain answers, and when to talk to a lawyer.' },
+        { icon: 'checklist', th: 'รายการเอกสารที่ต้องเตรียม', en: 'Document checklists', dTh: 'บอกเรื่องที่จะทำ AI จัดรายการเอกสารให้ และเพิ่มเป็นงานในเลขาได้ทันที', dEn: 'Describe the task — get a document checklist you can add to your secretary.' }
+      ],
+      values: [
+        { icon: 'visibility', th: 'โปร่งใส', en: 'Transparent', dTh: 'ราคาและสถานะงานเห็นได้ในระบบ', dEn: 'Prices and status are always visible' },
+        { icon: 'handshake', th: 'รับผิดชอบ', en: 'Accountable', dTh: 'มีผู้ประสานงานดูแลทุกงาน', dEn: 'A coordinator owns every job' },
+        { icon: 'all_inclusive', th: 'ครบวงจร', en: 'End-to-end', dTh: 'คุยที่เดียว จบทุกเรื่อง', dEn: 'One conversation, every service' }
+      ],
+      chips: L.map(l => { const on = c.lines.includes(l.k); return { icon: l.icon, th: l.th, en: l.en, bd: on ? '#1b2a4a' : '#d9d3c7', bg: on ? '#1b2a4a' : '#fff', fg: on ? '#f4efe7' : '#1b2a4a',
+        pick: () => this.up({ lines: on ? c.lines.filter(x => x !== l.k) : [...c.lines, l.k] }) }; }),
+      cName: c.name, cPhone: c.phone, cCo: c.co, cMsg: c.msg,
+      onName: e => this.up({ name: e.target.value }), onPhone: e => this.up({ phone: e.target.value }), onCo: e => this.up({ co: e.target.value }), onMsg: e => this.up({ msg: e.target.value }),
+      nameBd: s.cErr && !c.name.trim() ? red : '#d9d3c7', phoneBd: s.cErr && !/^0\d{8,9}$/.test(c.phone.replace(/[\s-]/g, '')) ? red : '#d9d3c7',
+      cErr: s.cErr, submit: () => ok ? this.setState({ sent: true }) : this.setState({ cErr: true }), sent: s.sent, notSent: !s.sent
+    };
+  }
+}
+</script>
+</body>
+</html>
